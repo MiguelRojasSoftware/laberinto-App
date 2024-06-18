@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resolver Laberinto</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+      h1 {
+        font-size: 2.5em;
+        color: #0056b3;
+        text-align: center;
+        z-index: 1;
+      }
+      h2 {
+        font-size: 1.5em;
+        color: #333;
+        z-index: 1;
+      }
+      form {
+        text-align: center;
+        margin-bottom: 20px;
+        z-index: 1;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 20px auto;
+        z-index: 1;
+      }
+      td {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #000;
+        font-size: 1em;
+      }
+      .wall {
+        background-color: #000;
+      }
+      .path {
+        background-color: #0f0;
+      }
+      .start {
+        background-color: #00f;
+        color: #fff;
+      }
+      .end {
+        background-color: #f00;
+        color: #fff;
+      }
+      .container {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+      .button {
+        background-color: #0056b3;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 10px;
+      }
+      .button:hover {
+        background-color: #004494;
+      }
+      .side-images {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 20%;
+        z-index: 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .left-image {
+        left: 0;
+        background-image: url('/images/colombian_coat_of_arms_tiger.png');
+      }
+      .right-image {
+        right: 0;
+        background-image: url('/images/colombian_coat_of_arms_tiger.png');
+        transform: scaleX(-1); /* Flip the image horizontally */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-images left-image"></div>
+    <div class="side-images right-image"></div>
+    <div class="container">
+      <h1>Resolver Laberinto</h1>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Subir Archivo de Laberinto:</label>
+        <input type="file" name="file" id="file" />
+        <button type="submit" class="button">Cargar Laberinto y Encontrar Camino</button>
+      </form>
+      <% if (path && path.length > 0) { %>
+        <h2>Camino Encontrado:</h2>
+        <table>
+          <% for (var i = 0; i < 10; i++) { %>
+            <tr>
+              <% for (var j = 0; j < 10; j++) { %>
+                <td class="<%= laberinto[i][j] == 0 ? 'wall' : '' %>
+                           <%= path.some(coord => coord[0] == (i + 1) && coord[1] == (j + 1)) ? 'path' : '' %>
+                           <%= i == 0 && j == 0 ? 'start' : '' %>
+                           <%= i == 9 && j == 9 ? 'end' : '' %>">
+                  <%= laberinto[i][j] %>
+                </td>
+              <% } %>
+            </tr>
+          <% } %>
+        </table>
+      <% } %>
+    </div>
+  </body>
+</html>
