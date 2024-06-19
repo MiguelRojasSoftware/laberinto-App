@@ -11,6 +11,8 @@
         padding: 0;
         display: flex;
         justify-content: center;
+        background-image: url('/images/img.png');
+        background-size: cover;
         align-items: center;
         height: 100vh;
         flex-direction: column;
@@ -76,8 +78,22 @@
         cursor: pointer;
         font-size: 1em;
         margin-top: 10px;
+        margin-right: 10px;
       }
       .button:hover {
+        background-color: #004494;
+      }
+      .file-input {
+        background-color: #0056b3;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-right: 10px;
+      }
+      .file-input:hover {
         background-color: #004494;
       }
       .side-images {
@@ -90,26 +106,21 @@
         background-repeat: no-repeat;
         background-position: center;
       }
-      .left-image {
-        left: 0;
-        background-image: url('/images/colombian_coat_of_arms_tiger.png');
+      input[type="file"] {
+        display: none;
       }
-      .right-image {
-        right: 0;
-        background-image: url('/images/colombian_coat_of_arms_tiger.png');
-        transform: scaleX(-1); /* Flip the image horizontally */
+      label[for="file"] {
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <div class="side-images left-image"></div>
-    <div class="side-images right-image"></div>
     <div class="container">
       <h1>Resolver Laberinto</h1>
       <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="file">Subir Archivo de Laberinto:</label>
+        <label for="file" class="file-input">Examinar</label>
         <input type="file" name="file" id="file" />
-        <button type="submit" class="button">Cargar Laberinto y Encontrar Camino</button>
+        <button type="submit" class="button">Cargar Laberinto</button>
       </form>
       <% if (path && path.length > 0) { %>
         <h2>Camino Encontrado:</h2>
