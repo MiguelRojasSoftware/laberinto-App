@@ -5,9 +5,9 @@ oracledb.initOracleClient({ libDir: 'C:\\oraclexe\\instantclient_21_14' }); // A
 
 // Configuración de la conexión a la base de datos Oracle
 const config = {
-  user: 'USER', // Usuario de la base de datos
-  password: 'PASSWORD', // Contraseña del usuario
-  connectString: 'CONEXION' // Cadena de conexión: host, puerto y SID
+  user: 'laberinto', // Usuario de la base de datos
+  password: 'algopersonal', // Contraseña del usuario
+  connectString: 'localhost:1521/xe' // Cadena de conexión: host, puerto y SID
 };
 
 // Función para inicializar el pool de conexiones

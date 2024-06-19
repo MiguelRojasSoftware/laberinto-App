@@ -61,6 +61,9 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 
       console.log('Resultado de encontrar_camino:', result.outBinds);
 
+      // Commit de la transacción
+      await connection.commit();
+
       const pathQuery = await connection.execute(
         `SELECT fila, columna FROM laberinto WHERE valor = 9 ORDER BY fila, columna`
       );
