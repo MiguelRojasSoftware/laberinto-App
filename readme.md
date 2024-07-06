@@ -1,8 +1,12 @@
 #Laberinto Solver con Node.js y Oracle
 ##Descripción
 
-ejecucion npm start
+ejecucion
+
+npm start
+
 Requerimientos
+
 modulos de node
 
 Este proyecto permite resolver laberintos utilizando Node.js, Express.js y Oracle Database. Los usuarios pueden cargar un archivo de texto que representa un laberinto, y el sistema utiliza una función PL/SQL para encontrar el camino desde el inicio hasta la salida del laberinto. Los resultados se muestran gráficamente en la interfaz web.
